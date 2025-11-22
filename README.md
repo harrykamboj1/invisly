@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+  # Invisly.ai — AI-Powered Stock Intelligence Platform
 
-## Getting Started
+Invisly.ai is an advanced, AI-driven stock analysis platform that empowers retail investors with **real-time insights, chart-driven analytics, AI agent recommendations, stock alerts, and curated financial news** — all in a clean, fast Next.js interface.
 
-First, run the development server:
+Built with **Next.js, TailwindCSS, Shadcn UI, LangChain Agents, MongoDB, Better Auth, and Inngest**, Invisly.ai brings institutional-grade intelligence to everyday investors.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+##  Features
+
+###  1. Advanced Stock Charts
+- Interactive charts with price, volume, and intraday performance  
+- Multi-timeframe charting  
+- Clean UI powered by Shadcn + Tailwind  
+
+###  2. AI-Driven Stock Analysis
+- LangChain Agents analyze fundamentals, sector trends, news sentiment & macro indicators  
+- Clear buy/sell/hold recommendations  
+- Multi-model reasoning (Gemini, Tavily, Alpha Vantage)
+
+###  3. Price Alerts
+- Real-time price alerts  
+- Background tasks via **Inngest**  
+- Email notifications with Nodemailer  
+
+###  4. Personalized Watchlist News
+- Latest market news powered by MarketAux  
+- AI-generated summaries  
+- Relevance-ranked by sentiment and trend  
+
+###  5. Watchlist Management
+- Add/remove stocks  
+- Track performance and sentiment  
+- AI annotations on major price movements  
+
+###  6. Secure Authentication
+- Powered by **Better Auth**  
+- Production-ready, session-secure login system  
+
+###  7. Production Deployment
+- Fully deployed on **Vercel**  
+
+###  8. Open for Contributions
+Developers are encouraged to extend, optimize, and enhance the platform.
+
+---
+
+## Tech Stack
+
+### **Frontend**
+- Next.js (App Router)
+- React
+- Shadcn UI
+- TailwindCSS
+
+### **Backend**
+- Next.js API Routes / Server Actions  
+- LangChain Agents  
+- MongoDB  
+- Better Auth  
+- Inngest (scheduled jobs)
+
+### **External APIs / AI**
+- Gemini API  
+- Tavily Search API  
+- Alpha Vantage (price feed)  
+- MarketAux (news)  
+- Google API  
+
+### **Deployment**
+- **Vercel**
+
+---
+
+##  Environment Variables
+
+Create an `.env.local` file in the project root:
+
+```env
+MONGODB_URI=
+BETTER_AUTH_SECRET=
+BETTER_AUTH_URL=
+
+NODEMAILER_EMAIL=
+NODEMAILER_PASSWORD=
+
+GEMINI_API_KEY=
+PROD_URL=
+
+ALPHA_ADVANTAGE_API_KEY=
+MARKETAUX_KEY=
+TAVILY_API_KEY=
+GOOGLE_API_KEY=
 ```
+## Installation & Setup
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Clone the Repository
+```bash
+git clone https://github.com/<your-repo>/invisly.ai.git
+cd invisly.ai
+npm install
+npm run dev
+http://localhost:3000
+```
