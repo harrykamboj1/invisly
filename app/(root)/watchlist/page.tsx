@@ -1,17 +1,25 @@
 import SearchCommand from "@/components/SearchCommand";
 import { WatchlistTable } from "@/components/WatchListTable";
+import { getUserAlertList } from "@/lib/actions/alerts.actions";
 import { searchStocks } from "@/lib/actions/alphaAdvantage.actions";
 import {
   getWatchListSymbolNewsData,
   getWatchlistWithData,
 } from "@/lib/actions/watch.actions";
-import { Star } from "lucide-react";
-import React from "react";
+import { Star, Trash2 } from "lucide-react";
+
+import { IAlerts } from "@/lib/models/Alerts";
+import AlertList from "@/components/AlertList";
 
 const WatchListPage = async () => {
-  const watchlist = await getWatchlistWithData();
-  const news = await getWatchListSymbolNewsData();
-  const initialStocks = await searchStocks();
+  const [watchlist, alertList, news, initialStocks] = await Promise.all([
+    getWatchlistWithData(),
+    getUserAlertList(),
+    getWatchListSymbolNewsData(),
+    searchStocks(),
+  ]);
+
+  const deletAlert = (item: IAlerts) => {};
   if (watchlist.length == 0) {
     return (
       <section className="flex justify-center container gap-8 flex-col items-center md:mt-10 p-6 text-center">
@@ -58,8 +66,13 @@ const WatchListPage = async () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col flex-2">
-        <div className="h-50 w-50">Alerts</div>
+      <div className="flex flex-col flex-2 ml-6 ">
+        <h1 className="text-2xl font-semibold text-white pb-3">Alerts</h1>
+        <div className="bg-gray-800 border-2 p-3 rounded-sm">
+          <div>
+            <AlertList alertList={alertList} />
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -70,16 +83,16 @@ export default WatchListPage;
 function WatchListNewsCard({ symbol, name, title, description, url }: any) {
   return (
     <a href={url} target="_blank" rel="noopener noreferrer" className="block">
-      <div className="bg-gray-900 p-5 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col gap-3 border border-gray-700 hover:border-gray-500 h-full">
+      <div className="bg-gray-700 p-5 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col gap-3 border border-gray-700 hover:border-gray-500 h-full">
         <div className="flex items-start justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold bg-yellow-400 text-zinc-900 px-2 py-1 rounded">
+              {/* <span className="text-xs font-semibold bg-yellow-400 text-zinc-900 px-2 py-1 rounded">
                 {symbol}
-              </span>
-              <span className="text-sm text-gray-300 font-medium">{name}</span>
+              </span> */}
+              <span className="text-lg text-green-300 font-medium">{name}</span>
             </div>
-            <h3 className="mt-3 text-lg font-bold text-yellow-400 leading-tight">
+            <h3 className="mt-3 text-sm font-bold text-yellow-400 leading-tight">
               {title}
             </h3>
           </div>
@@ -90,8 +103,8 @@ function WatchListNewsCard({ symbol, name, title, description, url }: any) {
         </p>
 
         <div className="mt-auto flex items-center justify-between">
-          <span className="text-xs text-gray-500">Source</span>
-          <span className="text-sm underline text-blue-400">
+          {/* <span className="text-xs text-gray-500">Source</span> */}
+          <span className="text-xs underline text-blue-400">
             Read full article ↗
           </span>
         </div>
