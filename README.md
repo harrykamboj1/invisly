@@ -2,6 +2,12 @@
 
 Invisly.ai is an advanced, AI-driven stock analysis platform that empowers retail investors with **real-time insights, chart-driven analytics, AI agent recommendations, stock alerts, and curated financial news** — all in a clean, fast Next.js interface.
 
+[▶️ Watch Demo]()
+
+https://github.com/user-attachments/assets/d7b759bc-db97-4643-a063-38a7e847c383
+
+
+
 Built with **Next.js, TailwindCSS, Shadcn UI, LangChain Agents, MongoDB, Better Auth, and Inngest**, Invisly.ai brings institutional-grade intelligence to everyday investors.
 
 ---
